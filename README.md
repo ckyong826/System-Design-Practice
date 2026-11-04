@@ -1,5 +1,7 @@
 # System Design: Beyond the Diagram
 
+<img width="1672" height="941" alt="Why_ Start With Requirements" src="https://github.com/user-attachments/assets/32f6aec4-75d3-4053-8486-65f32f9656e4" />
+
 **One system. One challenge. One engineering lesson.**
 
 A growing collection of my **system design interview practice notes** — exploring how everyday products work at scale, what can go wrong, and the trade-offs engineers make to keep them reliable.
