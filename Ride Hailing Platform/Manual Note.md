@@ -33,3 +33,17 @@
 				  "sequence": 1024
 				}
 		2. websocket supports frequent bidirectional updates
+	2. Idempotency key to request ride
+	3. DB Design
+	4. Redis - Live driver locations
+		1. maintain also latest update timestamp seperately
+		2. since this is changed constantly
+4. High Level 
+	1. ![[Pasted image 20261030145048.png]]
+5. Deep Dive
+	1. How do we track million moving drivers?
+		1. if we run SQL UPDATE for every GPS msg, the location workload competes with important transactional operations
+	2. What makes geospatial search fast?
+		1. include neighboring cells and account for the boundary.
+	3. What if driver stops sending GPS?
+		1. The 
