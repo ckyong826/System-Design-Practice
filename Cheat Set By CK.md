@@ -1,6 +1,4 @@
-The key points are seperated by component to explain, i think just like thinking as software engineer, we only understand how each component working behind, then only can design a good system whatever situations.
-
-
+The key points are seperated by component to explain, i think just like thinking as software engineer, we only understand how each component working behind, then only can design a good system whatever situations. (base knowledge is important for high level design which is essential in this AI era. Code is cheap now.)
 
 ## Table of contents
 
@@ -890,18 +888,19 @@ Use other reachable nodes when preferred replicas are unavailable.
 - Cost: Fixed-set R/W intersection may no longer hold.
 
 ### 6. Merkle Trees
+![[Pasted image 20261108132719.png]]
 Compare hash trees to identify different data ranges.
 - Gain: Efficient replica synchronization.
 - Cost: Additional computation; does not decide which business value is correct.
 
 ### 7. Gossip Protocol
+![[Pasted image 20261108132739.png]]
 Nodes exchange membership and failure information.
 - Gain: Decentralized failure detection.
 - Cost: Information propagates gradually.
 - Important: Gossip is not consensus.
 
 ## Failure Fallback
-
 ### 1. One Replica Fails
 Problem: A follower crashes or becomes unreachable.
 - Effect: Reduced redundancy.
@@ -918,7 +917,7 @@ Problem: Primary/leader becomes unavailable.
 ### 3. Majority Unavailable
 Problem: Only 1 of 3 consensus nodes remains reachable.
 - Effect: Cannot safely commit new writes.
-- Fallback: Stop authoritative writes until quorum is restored.
+- Fallback: Stop authoritative writes until quorum is restored. (Fail closed)
 - Important: Never allow two independent leaders to create conflicting authoritative histories.
 
 ### 4. Async Replica Promoted Too Early
@@ -933,15 +932,16 @@ Problem: Regions cannot communicate.
 - Important: Do not blindly allow both regions to become independent writers.
 
 ## CAP Theorem (Important)
-
 During a network partition, a distributed system cannot guarantee both linearizable consistency and availability for every request.
 
-### CP (Consistency + Partition Tolerance)
+### CP (Consistency + Partition Tolerance) 
+Financial system
 - Prioritizes strong consistency.
 - May reject/block writes when quorum is unavailable.
 - Example: Majority-consensus-backed database.
 
 ### AP (Availability + Partition Tolerance)
+Amazon DynamoDB
 - Prioritizes successful responses during some partitions.
 - May return stale data or accept conflicting writes.
 - Example: Dynamo-style eventually consistent KV design.
@@ -952,7 +952,6 @@ During a network partition, a distributed system cannot guarantee both lineariza
 - Different operations in one system may make different choices.
 
 ## System Design Interview Takeaway
-
 - Replication → Creates redundant copies.
 - Synchronous → Stronger durability, higher latency.
 - Asynchronous → Faster writes, possible replication lag.
@@ -965,3 +964,435 @@ During a network partition, a distributed system cannot guarantee both lineariza
 - CAP → Consistency vs availability during network partitions.
 
 **Remember:** Replication improves availability, but durability and consistency depend on the replication protocol, acknowledgment policy, and failover process.
+
+# Sharding
+Used in: chat history, KV storage, rate-limit keys, notification inboxes, feed timelines, and eventually large booking datasets.
+## Characteristics 
+- A subset of the dataset assigned to a storage group
+- A partition key maps the record or query to subset
+- used to spread data volume, write throughput.
+- More expensive than adding index or remove unnecessary queries
+- Choose a partition key to match common operations like chat_id for conversation history, user_id for feed reads
+- How are records distributed, hash, range, directory based routing, or consistent hashing.
+## Case Study
+### conversation history grows too large
+1. Route messages by chat_id so a conversation’s common reads stay local.
+2. Add time buckets, such as (chat_id, month) , to bound partition size.
+3. A read for recent messages touches recent buckets, not every historical shard.
+4. One extremely active conversation can still be a hot write partition.
+5. Splitting that conversation further requires an explicit ordering/merge strategy; more shards alone do not preserve a total message order.
+![[Pasted image 20261108133730.png]]
+
+## Database Sharding / Partitioning Trade-offs
+### 1. Hash Partitioning
+Distributes data based on a hash function, e.g., `hash(userId) % N`.
+- Gain: Usually distributes keys evenly across shards.
+- Cost: Range queries are difficult; popular keys can still cause hot spots.
+- Use: User profiles, distributed KV stores.
+
+### 2. Range Partitioning
+Divides data based on value ranges, e.g., dates or user IDs.
+- Example: Shard A (1–1000), Shard B (1001–2000).
+- Gain: Efficient range queries and ordered scans.
+- Cost: Sequential inserts may overload one shard (hot partition).
+- Use: Time-series data, transaction history.
+
+### 3. Consistent Hashing + Virtual Nodes
+Maps keys and servers onto a hash ring. Virtual nodes give each physical server multiple positions on the ring.
+- Gain: Adding/removing servers only remaps a portion of keys; virtual nodes improve key distribution.
+- Cost: Rebalancing complexity, replica placement, and hot keys.
+- Use: Distributed caching, Dynamo-style KV stores.
+
+### 4. Co-locating Related Records
+Store related records on the same shard, usually using a shared partition key.
+- Example: All orders belonging to the same tenant stored together.
+- Gain: Faster local queries and easier single-shard transactions.
+- Cost: A very popular tenant/event may overload one shard.
+- Use: Multi-tenant applications, booking systems.
+
+### 5. Redis Cluster (Important)
+Redis Cluster uses **16,384 hash slots**, not a traditional consistent-hashing ring.
+- How: `HASH_SLOT = CRC16(key) mod 16384`.
+- Each Redis Cluster node owns a subset of slots.
+- Adding/removing nodes requires migrating slots.
+- Hash Tags: Keys with the same `{tag}` are mapped to the same slot.
+
+Example:
+- `user:{123}:profile`
+- `user:{123}:session`
+- Both keys belong to the same hash slot.
+- Gain: Enables related multi-key operations within one hash slot.
+- Cost: Putting too many popular keys in one slot can overload its owner node.
+- Important: Multi-key Lua scripts in Redis Cluster must operate on keys in the same hash slot.
+
+
+## Sharding / Partitioning Failure Fallback
+### 1. One Shard Owner Fails
+Problem: A shard's primary node crashes or becomes unavailable.
+- Effect: Part of the keyspace cannot be accessed.
+- Fallback: Promote a healthy replica using the database's failover protocol.
+- Example: Shard A fails → Replica A becomes the new primary.
+
+### 2. Routing Map Stale
+Problem: Application uses outdated shard routing information.
+- Effect: Requests are sent to the wrong shard.
+- Fallback: Refresh the routing map or follow validated redirects, then retry with a bounded limit.
+- Example: Key moves from Shard A to B, but the application still sends requests to A.
+
+### 3. Rebalancing Loses Ownership Clarity
+Problem: During shard migration, both old and new nodes may accept writes incorrectly.
+- Effect: Missing, duplicated, or conflicting writes.
+- Fallback:
+  - Controlled Cutover: Transfer ownership at a defined point.
+  - Ownership Version/Fencing: Reject writes from outdated owners.
+  - Reconciliation: Verify and repair data after migration.
+
+### 4. Hot Key / Hot Event
+Problem: One popular key or event receives too many requests.
+- Effect: One shard becomes overloaded while others remain underutilized.
+- Fallback:
+  - L1 Cache: Serve popular reads from application memory.
+  - Admission Control: Limit incoming writes.
+  - Workload Isolation: Separate high-traffic workloads.
+  - Key Redesign: Distribute traffic across multiple keys where correctness permits.
+- Important: Adding more shards may not solve a single hot key.
+
+### 5. Cross-Shard Operation Required
+Problem: One business transaction needs to update data across multiple shards.
+- Effect: A local database transaction cannot guarantee atomic updates across independent shards.
+- Fallback:
+  - Co-location: Store related data on the same shard when possible.
+  - Distributed Transaction (2-Phase-Commit): Coordinate atomic commits across supported shards.
+  - Saga Pattern: Execute local transactions with compensating actions on failure.
+- Important: A Saga provides eventual business consistency, not atomicity.
+
+# Message Queue
+like kafka or RabbitMQ
+Used in: notification pipelines, chat group delivery, news-feed fan-out, search indexing, and URL click analytics.
+## Characteristics
+- system that accepts events or job and let consumers process them indenpendently and asynchronously. 
+- A work queue distribute tasks
+- Help to decouple request latency from slow fan out, absorb temporary spikes, let independent consumers recover.
+- Producers emit durable business events; Consumer groups perform tasks.
+- Partition by required ordering key, persist event logs and commit progress for replay and metrics logs. 
+- Reply or retry may repeat work, so consumers still need idempotency.
+## Case Study
+### Group chat fan out
+1. Persist one accepted group message and its delivery intent.
+2. Publish a delivery event keyed by chat_id .
+3. A worker determines the eligible recipient/device set and creates delivery work.
+4. It crashes after inserting some inbox rows but before committing its broker position.
+5. Replay repeats the event; uniqueness on message-recipient/device work prevents duplicate logical insertion.
+![[Pasted image 20261108142243.png]]
+
+## Trade offs
+### 1. Durable Log (Kafka)
+Stores events in a replicated, persistent log. Consumers can read and replay events independently.
+- Gain: Event replay, high throughput, and independent consumer groups.
+- Cost: Partition management, retention limits, and operational complexity.
+- Use: Event-driven systems, analytics, order events, and data pipelines.
+- Important:
+  - Ordering is guaranteed within a partition, not across all partitions.
+  - Kafka transactions can coordinate Kafka offsets and output records.
+  - External DB writes and payments still require idempotency.
+  - Configure replication, `acks=all`, and `min.insync.replicas` for durability.
+
+### 2. Managed Work Queue (AWS SQS / RabbitMQ)
+Producers send tasks to a queue; workers consume and process them.
+- Gain: Simple asynchronous task processing, retries, and worker scaling.
+- Cost: Ordering, deduplication, and replay depend on queue type and configuration.
+- Use: Email sending, image processing, background jobs.
+- Important: Workers should be idempotent because messages may be delivered more than once.
+
+### 3. Redis Pub/Sub
+Publish messages to currently connected subscribers.
+- Gain: Fast, lightweight real-time notifications.
+- Cost: At-most-once delivery; disconnected subscribers permanently miss messages.
+- Use: Live notifications, cache invalidation hints, disposable events.
+- Important: Not suitable as the only durable chat/message storage.
+
+### 4. Direct Synchronous Call (HTTP / gRPC)
+One service directly calls another and waits for its response.
+- Gain: Immediate result, simple request-response flow.
+- Cost: Caller depends on downstream latency and availability.
+- Use: Authentication checks, immediate payment responses, real-time queries.
+- Fallback: Timeouts, circuit breakers, and safe retries.
+
+## Failure Fallback
+### 1. Broker Temporarily Unavailable
+Problem: Kafka or message broker goes down, preventing event publishing.
+- Effect: New events cannot be delivered to consumers.
+- Fallback:
+  - Transactional Outbox: Store events in the database alongside business transactions.
+  - Retry publishing when the broker recovers.
+  - Reject or pause new operations if durable backlog capacity is exhausted. (Failed Close)
+- Important: Never lose a committed business event just because Kafka is down.
+
+### 2. Consumer Crashes
+Problem: Consumer crashes while processing a message.
+- Effect: Work may be incomplete, or the outcome may be unknown.
+- Fallback:
+  - Replay messages from the last safely committed offset.
+  - Use idempotency keys to prevent duplicate processing.
+- Example: Payment consumer crashes after charging but before committing its offset. Replaying must not charge twice.
+
+### 3. Backlog Exceeds Retention
+Problem: Consumers process messages too slowly, and Kafka deletes old messages after the retention period.
+- Effect: Unconsumed events may be permanently lost.
+- Fallback:
+  - Monitor consumer lag and alert before retention expires.
+  - Increase consumer capacity or retention period.
+  - Rebuild missing events from a durable source if available.
+
+### 4. Poison Message Blocks a Partition
+Problem: One invalid message repeatedly fails processing.
+- Effect: Later messages in the same partition cannot progress if strict ordering is enforced.
+- Fallback:
+  - Retry with a bounded limit and backoff.
+  - Send failed messages to a Dead Letter Queue (DLQ).
+  - Define how to handle ordering before skipping the failed message.
+- Important: Skipping a message may break business ordering requirements.
+
+### 5. Hot Partition
+Problem: One Kafka partition receives significantly more traffic than others.
+- Effect: Processing bottleneck even when other consumers are idle.
+- Fallback:
+  - Distribute messages using better partition keys.
+  - Increase partitions if ordering requirements permit.
+  - Scale consumers after improving partition distribution.
+- Important: Adding consumers alone won't speed up one partition within the same consumer group.
+
+# Transactional Outbox & Durable Inbox
+Outbox means “I committed this change and must publish its consequence.” Inbox means “I durably accepted this incoming event and must process it safely.”
+	Basically, just means we save a event row in db, then scheduled job or observer will read the unprocessed event then publish to broker. Consumer then process it and run the related logic asynchronously.
+## Used in: 
+payments, file changes, posts, chat delivery, search indexing, and notifications.
+## Characteristics
+### 1. What — What Problem Does It Solve?
+Problem: Dual Write — updating the database and publishing an event are two separate operations.
+- Effect: DB update succeeds, but event publishing fails, causing inconsistent systems.
+- Solution: Save business data and outbox event in the same DB transaction.
+
+### 2. Why — Why Not Publish Directly?
+Problem: Application may crash between DB commit and event publishing.
+- Publish Before Commit: Event published, but DB transaction rolls back.
+- Publish After Commit: DB commits, but application crashes before publishing.
+- Solution: Transactional Outbox guarantees business data and event intent are committed together.
+
+### 3. Who — Who Handles Each Step?
+- Business Service: Saves business data + outbox event atomically.
+- Outbox Relay: Reads committed outbox events and publishes to Kafka/SQS.
+- Consumer: Processes events and deduplicates using event IDs.
+- Inbox Pattern: Consumer stores verified incoming event IDs to prevent duplicate business effects.
+
+### 4. Where — Where Is Atomicity Guaranteed?
+- Producer DB: Business row + outbox row commit together.
+- Consumer DB: Processed event ID + business changes commit together.
+- Important: Outbox does NOT guarantee atomicity across different databases or external payment providers.
+
+### 5. When — When Should We Use CDC?
+CDC (Change Data Capture) reads committed database changes, often from the transaction log.
+- Gain: Publishes changes without repeatedly polling the outbox table.
+- Use: High-volume event publishing, data synchronization, and maintaining read projections.
+- Important: Raw database changes are not automatically meaningful business events.
+
+### 6. How — How Does Recovery Work?
+1. Business service commits business data + outbox event.
+2. Relay reads unpublished outbox events.
+3. Relay publishes event to the message broker.
+4. Broker acknowledges successful publication.
+5. Relay marks the event as published.
+6. If relay crashes before step 5, it republishes the same event ID.
+
+## Case Study
+### a post saves but fan-out publication fails
+1. One transaction inserts post:P9 and event:E9, type=PostCreated .
+2. The API acknowledges after the required durable commit.
+3. Kafka is unavailable; E9 remains pending.
+4. The relay publishes E9 after recovery.
+5. A fan-out consumer atomically inserts its deduplication record and local feed work.
+6. If E9 arrives twice, the second attempt does not create a second logical insertion.
+![[Pasted image 20261109014755.png]]
+
+### Durable webhook inbox
+Stores incoming webhook events in a database before processing them asynchronously, preventing lost or duplicate payment processing.
+
+**How it works:**
+1. Payment provider sends a webhook (e.g., Payment Success).
+2. Verify signature using the original request body and check timestamp/replay rules.
+3. Save event in an Inbox table with a unique provider/account/event ID.
+4. Return HTTP 2xx after successful durable storage.
+5. Background worker reads unprocessed events and updates payment status.
+6. Duplicate events are ignored using the unique event ID.
+
+**Example:**
+    Stripe → Webhook API
+                  |
+            Verify Signature
+                  |
+            PostgreSQL Inbox
+                  |
+             Return HTTP 200
+                  |
+            Background Worker
+                  |
+            Update Payment Status
+            
+## Trade offs
+### 1. Poll Outbox Table (Scheduled Job)
+Background worker periodically reads unpublished events from the database and publishes them to Kafka.
+- Gain: Simple implementation, easy to understand and debug.
+- Cost: DB polling overhead, publication delay, and outbox cleanup.
+- Use: Small/medium applications with moderate event volume.
+- Example: Scheduled job checks pending events every 5 seconds.
+
+### 2. CDC Relay (Change Data Capture)
+Tools like Debezium read committed changes from the database transaction log and publish events to Kafka.
+- Gain: Near-real-time event publishing without repeatedly polling the outbox table.
+- Cost: Connector management, transaction-log retention, schema changes, and operational complexity.
+- Use: High-volume event-driven systems.
+- Important: CDC can still produce duplicate events; consumers need idempotency.
+
+### 3. Durable Inbox
+Stores incoming events in the database before processing them asynchronously.
+- Gain: Survives receiver crashes, supports retries and deduplication.
+- Cost: Extra storage, deduplication logic, and processing backlog.
+- Use: Payment webhooks, external callbacks, reliable event consumers.
+- Example: Stripe webhook → Inbox DB → Background Worker.
+
+### 4. Direct Publish Only
+Application commits business data, then publishes an event directly to Kafka.
+- Gain: Simple, fewer components, lower operational overhead.
+- Cost: Application crash between DB commit and publishing can permanently lose the event.
+- Use: Noncritical events where occasional event loss is acceptable.
+- Important: Not recommended for critical payment or order events.
+
+## Key Difference Between Outbox & Inbox
+==Bascially Outbox event is saved in Producer DB but Inbox event is saved in Consumer DB==
+
+|                 | Outbox               | Inbox                              |
+| --------------- | -------------------- | ---------------------------------- |
+| Direction       | Outgoing             | Incoming                           |
+| Purpose         | Reliable publishing  | Reliable receiving/processing      |
+| Event source    | Our application      | External system/broker             |
+| Worker action   | Publish event        | Process event                      |
+| Main protection | Lost outgoing events | Lost/duplicate incoming processing |
+
+## Failure Fallback
+### 1. Relay Down
+Problem: Outbox worker crashes or stops publishing events.
+- Effect: Business DB commits succeed, but events are not delivered to Kafka.
+- Fallback: Restart worker and process pending events.
+- Important: Monitor backlog size and oldest pending event age.
+
+### 2. Publish Succeeds, Mark Fails
+Problem: Event successfully publishes to Kafka, but worker crashes before marking it as published.
+- Effect: Same event may be published again.
+- Fallback: Use stable event IDs and idempotent consumers to prevent duplicate business effects.
+- Example: Event published twice, but payment is processed only once.
+
+### 3. Dedup Marker Saved Without Business Effect
+Problem: Consumer marks an event as processed before completing the business operation.
+- Effect: On retry, the event may be skipped forever even though the operation never completed.
+- Fallback: Save the processed event ID and business changes in the SAME DB transaction.
+- Example: Marking Payment Success as processed without updating the order status.
+
+### 4. CDC Log Position Lost / Expired
+Problem: CDC worker loses its checkpoint or required database log entries expire.
+- Effect: Some events may be missing from Kafka or downstream projections.
+- Fallback: Rebuild using a controlled database snapshot + replay available changes.
+- Important: Reconcile downstream data against the source of truth.
+
+### 5. Backlog Storage Fills
+Problem: Outbox events accumulate because Kafka or the relay remains unavailable.
+- Effect: Database storage may run out, preventing new transactions.
+- Fallback: Throttle or reject new operations before storage is exhausted.
+- Important: Never silently discard committed business events to free space.
+
+# Idempotency & State Machines
+Idempotency answers “is this the same operation?” A state machine answers “is this
+transition allowed now?”
+## Used in: 
+payment creation/capture/refund/payout, seat checkout, file commits, chat sends, and notification delivery.
+## Characteristic
+- Idempotency key is used to identify is the operation same due to network retry or replay or any duplicate process to avoid duplicate process. -> duplicate payment is crictical
+- upstream normally creates a atomically unique key or frontend.
+
+## Case Study
+###  payment succeeded but the response was lost
+1. Client submits operation pay:order-42 .
+2. The payment service saves the payment operation and a stable PSP-operation key.
+3. PSP performs the effect, but the response times out.
+4. Mark the outcome UNKNOWN / pending verification—not definitively failed.
+5. Query/retry according to the provider’s original-operation contract.
+6. Return the same verified operation result when the client retries.
+![[Pasted image 20261109020100.png]]
+
+## Tradeoffs 
+### 1. Durable Uniqueness + State (Recommended)
+Store idempotency keys and processing status in a durable database with a UNIQUE constraint.
+- Gain: Prevents duplicate business operations even after crashes or restarts.
+- Cost: Extra DB storage and concurrency handling.
+- Use: Payments, orders, bookings.
+- Example: Same payment request ID received twice → Return the existing result instead of charging again.
+
+### 2. Cache-Only Deduplication (Redis)
+Store processed request IDs in Redis with TTL.
+- Gain: Fast, low latency.
+- Cost: Cache eviction, failover, or TTL expiry may allow duplicate processing.
+- Use: Noncritical operations where occasional duplicates are acceptable.
+- Important: Don't rely on cache-only deduplication for financial transactions.
+
+### 3. Long Dedup Retention
+Keep idempotency records for an extended period.
+- Gain: Prevents duplicates during long retry or event replay windows.
+- Cost: More storage, cleanup, and privacy management.
+- Use: Payment webhooks, financial events, delayed retries.
+- Important: Retention should cover the expected retry and replay period.
+
+### 4. One Generic Payment Status
+Represent all payment operations using one status (e.g., PENDING, SUCCESS, FAILED).
+- Gain: Simple implementation and UI display.
+- Cost: Cannot accurately represent separate authorization, capture, refund, and payout operations.
+- Fallback: Track each payment operation separately with its own ID and status.
+- Example: Payment captured successfully, but refund is still pending. A single SUCCESS status cannot represent both correctly.
+
+## Idempotency & Deduplication Failure Fallback
+### 1. Two Identical Requests Race
+Problem: Two requests with the same idempotency key arrive simultaneously.
+- Effect: Both might execute the same operation, causing duplicate payments or orders.
+- Fallback:
+  - Use a UNIQUE constraint on the scoped idempotency key.
+  - Atomically claim the operation before processing.
+  - Second request waits or returns the first request's result.
+- Example: Two payment requests arrive together → Only one payment is executed.
+
+### 2. Same Key, Different Payload
+Problem: Client reuses an idempotency key with different request data.
+- Effect: Same key represents two conflicting operations.
+- Fallback: Store and compare a request payload hash; reject mismatches.
+- Example: Key `pay123` originally requests RM100, but retry requests RM200 → Reject.
+
+### 3. Provider Outcome Unknown
+Problem: Payment provider times out after receiving a charge request.
+- Effect: Payment may have succeeded, risking double charges.
+- Fallback:
+  - Preserve the original idempotency key.
+  - Query provider using the original operation ID.
+  - Retry only when safe under provider guarantees.
+- Important: Never generate a fresh key just because a payment timed out.
+
+### 4. Dedup Store Unavailable
+Problem: Database storing idempotency records becomes unavailable.
+- Effect: Cannot verify whether the operation was already processed.
+- Fallback: Reject or defer sensitive operations until the database recovers.
+- Important: Never bypass idempotency checks for critical payments.
+
+### 5. Provider Has No Idempotency Support
+Problem: External provider cannot deduplicate requests or reliably query previous outcomes.
+- Effect: Retrying an unknown operation may execute it twice.
+- Fallback:
+  - Avoid automatic retries when the outcome is uncertain.
+  - Reconcile using provider records or manual investigation.
+  - Explicitly accept a weaker delivery guarantee.
+- Important: Local idempotency cannot fully prevent duplicate external effects without provider cooperation.
