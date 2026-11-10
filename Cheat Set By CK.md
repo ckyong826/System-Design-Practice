@@ -9,6 +9,11 @@ The key points are seperated by component to explain, i think just like thinking
 - [[#Microservices and Distributed System]]
 - [[#Cache]]
 - [[#Relational DB & Transaction]]
+- [[#Replication, Consistency and Failover]]
+- [[#Sharding]]
+- [[#Message Queue]]
+- [[#Transactional Outbox & Durable Inbox]]
+- [[#Idempotency & State Machines]]
 
 # DNS and CDN edge
 ## Used in?
