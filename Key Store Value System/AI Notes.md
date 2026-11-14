@@ -721,18 +721,18 @@ C=Down
 These systems make different availability and consistency trade-offs.
 
 ## 8.4 Important Interview Trade-offs
-| Decision | Advantage | Trade-off |
-|---|---|---|
-| W=1 | Lower write latency | Weaker replica acknowledgment guarantee |
-| W=2 | More replicated acknowledgments | Higher write latency |
-| R=1 | Lower read latency | Greater chance of stale reads |
-| R=2 | More information about replicas | Higher read latency |
-| More replicas | Better potential availability | More storage and network cost |
-| Virtual Nodes | Better expected balance | More metadata and rebalancing complexity |
-| LWW | Simple conflict handling | Can discard valid concurrent updates |
-| Vector Clocks | Detect concurrent versions | Requires conflict resolution |
-| Sloppy Quorum | Higher availability | Weaker strict-quorum assumptions |
-| Multi-AZ | Better fault tolerance | Cross-AZ latency and cost |
+| Decision      | Advantage                       | Trade-off                                |
+| ------------- | ------------------------------- | ---------------------------------------- |
+| W=1           | Lower write latency             | Weaker replica acknowledgment guarantee  |
+| W=2           | More replicated acknowledgments | Higher write latency                     |
+| R=1           | Lower read latency              | Greater chance of stale reads            |
+| R=2           | More information about replicas | Higher read latency                      |
+| More replicas | Better potential availability   | More storage and network cost            |
+| Virtual Nodes | Better expected balance         | More metadata and rebalancing complexity |
+| LWW           | Simple conflict handling        | Can discard valid concurrent updates     |
+| Vector Clocks | Detect concurrent versions      | Requires conflict resolution             |
+| Sloppy Quorum | Higher availability             | Weaker strict-quorum assumptions         |
+| Multi-AZ      | Better fault tolerance          | Cross-AZ latency and cost                |
 
 ---
 # Interview Summary

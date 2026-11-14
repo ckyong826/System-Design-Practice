@@ -1,3 +1,4 @@
+![[Pasted image 20261114173908.png]]
 Probabliy this is same = Design Distributed Cache 
 1. Requirement Gathering (Probably this is asking from interviewer)
 	1. Functional

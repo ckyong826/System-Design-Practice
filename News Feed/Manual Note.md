@@ -1,4 +1,4 @@
-1. Reqruiement
+![[Pasted image 20261114174043.png]]1. Reqruiement
 	1. FR
 		1. CRUD post
 		2. Follow feature
