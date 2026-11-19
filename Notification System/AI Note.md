@@ -909,16 +909,16 @@ flowchart TD
 ---
 
 ## 6.9 Monitoring
-| Metric | Why |
-|---|---|
-| Kafka Consumer Lag | Detect processing backlog |
-| Queue Age | Measure waiting time |
-| p95 Dispatch Latency | Detect delayed notifications |
-| Provider Error Rate | Detect external outages |
-| Retry Count | Identify delivery instability |
-| DLQ Size | Identify failed jobs |
-| Delivery/Bounce Rate | Measure delivery quality |
-| Notification Volume | Capacity planning |
+| Metric               | Why                           |
+| -------------------- | ----------------------------- |
+| Kafka Consumer Lag   | Detect processing backlog     |
+| Queue Age            | Measure waiting time          |
+| p95 Dispatch Latency | Detect delayed notifications  |
+| Provider Error Rate  | Detect external outages       |
+| Retry Count          | Identify delivery instability |
+| DLQ Size             | Identify failed jobs          |
+| Delivery/Bounce Rate | Measure delivery quality      |
+| Notification Volume  | Capacity planning             |
 
 **Most Important:** p95 dispatch latency, queue age, successful provider handoff rate, and DLQ growth.
 

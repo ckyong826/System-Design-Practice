@@ -1,0 +1,3833 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.27.3",
+  "elements": [
+    {
+      "id": "TSKlJqyh",
+      "type": "text",
+      "x": 0,
+      "y": 90,
+      "width": 484,
+      "height": 575,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0",
+      "roundness": null,
+      "seed": 1271725677,
+      "version": 1417,
+      "versionNonce": 1797558822,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070946132,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Functional Requirements\n-> Check balance\n-> Transfer money\n-> View transaction history\n\nNon Functional Requirements\n-> Strong consistency for money + fresh balances\n-> History can lag a few seconds\n-> 99.95% monthly availability, correctness first\n-> p95 balance <200ms\n-> p95 completed transfer <500ms\n\nBack of the envelope\n10M registered users, 2M DAU\n2M x 5 transfers/day = 10M/day\n-> 116 average TPS; 1,160 peak at 10x\n2M x 50 combined reads/day = 100M/day\n-> 1,160 average RPS; about 12K peak\n\nStorage (500 bytes/transfer, raw estimate)\n300M/month -> 150GB/month -> 1.8TB/year\n-> Excludes ledger, indexes, WAL, replicas,\n   and backups",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Functional Requirements\n-> Check balance\n-> Transfer money\n-> View transaction history\n\nNon Functional Requirements\n-> Strong consistency for money + fresh balances\n-> History can lag a few seconds\n-> 99.95% monthly availability, correctness first\n-> p95 balance <200ms\n-> p95 completed transfer <500ms\n\nBack of the envelope\n10M registered users, 2M DAU\n2M x 5 transfers/day = 10M/day\n-> 116 average TPS; 1,160 peak at 10x\n2M x 50 combined reads/day = 100M/day\n-> 1,160 average RPS; about 12K peak\n\nStorage (500 bytes/transfer, raw estimate)\n300M/month -> 150GB/month -> 1.8TB/year\n-> Excludes ledger, indexes, WAL, replicas,\n   and backups",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Functional Requirements\n-> Check balance\n-> Transfer money\n-> View transaction history\n\nNon Functional Requirements\n-> Strong consistency for money + fresh balances\n-> History can lag a few seconds\n-> 99.95% monthly availability, correctness first\n-> p95 balance <200ms\n-> p95 completed transfer <500ms\n\nBack of the envelope\n10M registered users, 2M DAU\n2M x 5 transfers/day = 10M/day\n-> 116 average TPS; 1,160 peak at 10x\n2M x 50 combined reads/day = 100M/day\n-> 1,160 average RPS; about 12K peak\n\nStorage (500 bytes/transfer, raw estimate)\n300M/month -> 150GB/month -> 1.8TB/year\n-> Excludes ledger, indexes, WAL, replicas,\n   and backups"
+    },
+    {
+      "id": "yXL4tewX6ULsQ63JTKVNj",
+      "type": "rectangle",
+      "x": 810,
+      "y": 420,
+      "width": 130,
+      "height": 90,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-1"
+      ],
+      "frameId": null,
+      "index": "a0001",
+      "roundness": {
+        "type": 3
+      },
+      "seed": 112082445,
+      "version": 414,
+      "versionNonce": 112084240,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "type": "text",
+          "id": "zhzV2vfM"
+        },
+        {
+          "type": "arrow",
+          "id": "oJvH6Ox-T6fO60-ipYkwM"
+        }
+      ],
+      "updated": 1795070903234,
+      "created": 1794322630148,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "zhzV2vfM",
+      "type": "text",
+      "x": 847,
+      "y": 452.5,
+      "width": 56,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-1"
+      ],
+      "frameId": null,
+      "index": "a0002",
+      "roundness": null,
+      "seed": 594805549,
+      "version": 400,
+      "versionNonce": 594807344,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322632388,
+      "link": null,
+      "locked": false,
+      "text": "Client",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "yXL4tewX6ULsQ63JTKVNj",
+      "originalText": "Client",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Client"
+    },
+    {
+      "id": "_Bap6Xy55_3ZuU9s4zeOr",
+      "type": "rectangle",
+      "x": 1010,
+      "y": 330,
+      "width": 130,
+      "height": 280,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-3"
+      ],
+      "frameId": null,
+      "index": "a0003",
+      "roundness": {
+        "type": 3
+      },
+      "seed": 10543629,
+      "version": 418,
+      "versionNonce": 10545424,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "type": "text",
+          "id": "fbSved8G"
+        },
+        {
+          "type": "arrow",
+          "id": "oJvH6Ox-T6fO60-ipYkwM"
+        },
+        {
+          "type": "arrow",
+          "id": "aXqAQGeBuh3Xtrrbx0efg"
+        },
+        {
+          "type": "arrow",
+          "id": "UnGjTAYEyddy3OhHfduay"
+        },
+        {
+          "type": "arrow",
+          "id": "px7Chjm-Ss-dnU6wmCb-8"
+        }
+      ],
+      "updated": 1795070903234,
+      "created": 1794322649797,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "fbSved8G",
+      "type": "text",
+      "x": 1033,
+      "y": 445,
+      "width": 84,
+      "height": 50,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-3"
+      ],
+      "frameId": null,
+      "index": "a0004",
+      "roundness": null,
+      "seed": 1619725027,
+      "version": 400,
+      "versionNonce": 1619726822,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322650916,
+      "link": null,
+      "locked": false,
+      "text": "Load\nBalancer",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "_Bap6Xy55_3ZuU9s4zeOr",
+      "originalText": "Load\nBalancer",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Load\nBalancer"
+    },
+    {
+      "id": "cKv_NVgxFFSTyLEX6LZeb",
+      "type": "rectangle",
+      "x": 1220,
+      "y": 270,
+      "width": 250,
+      "height": 100,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-5"
+      ],
+      "frameId": null,
+      "index": "a0005",
+      "roundness": {
+        "type": 3
+      },
+      "seed": 959053763,
+      "version": 520,
+      "versionNonce": 959055558,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "type": "text",
+          "id": "aS30mPUy"
+        },
+        {
+          "type": "arrow",
+          "id": "aXqAQGeBuh3Xtrrbx0efg"
+        },
+        {
+          "type": "arrow",
+          "id": "LducTaT1cOhvscdcxq7ke"
+        }
+      ],
+      "updated": 1795070903234,
+      "created": 1794322656336,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "aS30mPUy",
+      "type": "text",
+      "x": 1262,
+      "y": 307.5,
+      "width": 166,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-5"
+      ],
+      "frameId": null,
+      "index": "a0006",
+      "roundness": null,
+      "seed": 1811615587,
+      "version": 531,
+      "versionNonce": 1811617382,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322656336,
+      "link": null,
+      "locked": false,
+      "text": "Wallet Service #1",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "cKv_NVgxFFSTyLEX6LZeb",
+      "originalText": "Wallet Service #1",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Wallet Service #1"
+    },
+    {
+      "id": "JKUgRVs36AgBrCauXvP6G",
+      "type": "line",
+      "x": 1740,
+      "y": 430,
+      "width": 88.21658171083376,
+      "height": 113.8575037534261,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#228be6",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-7"
+      ],
+      "seed": 229560259,
+      "version": 4360,
+      "versionNonce": 229562054,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.29089298333313673,
+          86.05288422061678
+        ],
+        [
+          0.013613108737802165,
+          95.84963140781468
+        ],
+        [
+          4.543349062013738,
+          100.08268472409586
+        ],
+        [
+          20.317928500125443,
+          103.66521849306073
+        ],
+        [
+          46.98143617553956,
+          104.78076599153316
+        ],
+        [
+          72.45665455006592,
+          102.9996310009587
+        ],
+        [
+          85.99182564238487,
+          98.74007888522631
+        ],
+        [
+          87.90077837148979,
+          95.14923176741362
+        ],
+        [
+          88.16888387182134,
+          87.26194204835767
+        ],
+        [
+          87.95845222911922,
+          7.219356674957439
+        ],
+        [
+          87.48407176050935,
+          -0.3431928547433216
+        ],
+        [
+          81.81967725989045,
+          -4.569951534960701
+        ],
+        [
+          69.89167127292335,
+          -7.017866506201685
+        ],
+        [
+          42.70935725136615,
+          -9.076737761892943
+        ],
+        [
+          20.91603533578692,
+          -7.849028196182914
+        ],
+        [
+          3.775735655469765,
+          -3.684787148572539
+        ],
+        [
+          -0.047697839012426885,
+          -0.0517060607782156
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lastCommittedPoint": [
+        1.0602678571428896,
+        551.8638392857142
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0007",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [
+        {
+          "type": "arrow",
+          "id": "LducTaT1cOhvscdcxq7ke"
+        },
+        {
+          "type": "arrow",
+          "id": "dq0_CJQH3ITLtHJJbeptU"
+        },
+        {
+          "type": "arrow",
+          "id": "0gXGV5ZQwL5WTiqCF2Tdh"
+        },
+        {
+          "type": "arrow",
+          "id": "ZVSN9CPMTednOdq_P-q1t"
+        }
+      ],
+      "updated": 1795070903234,
+      "created": 1794322664542,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "wlR9WAtQrVdntiV8BHiMs",
+      "type": "line",
+      "x": 1740.6873615894974,
+      "y": 495.2901280307874,
+      "width": 88.30808627974527,
+      "height": 9.797916664247975,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-7"
+      ],
+      "seed": 2003165027,
+      "version": 2094,
+      "versionNonce": 2003166822,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          2.326538897826852,
+          3.9056133261361587
+        ],
+        [
+          12.359939318521995,
+          7.182387014695761
+        ],
+        [
+          25.710950037209347,
+          9.166781347006062
+        ],
+        [
+          46.6269757640547,
+          9.347610268342288
+        ],
+        [
+          71.03526003420632,
+          8.084235941711592
+        ],
+        [
+          85.2899738827162,
+          3.4881086608341767
+        ],
+        [
+          88.30808627974527,
+          -0.45030639590568633
+        ]
+      ],
+      "lastCommittedPoint": [
+        510.69444444444457,
+        -2.6041666666666288
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0008",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322664542,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "BN45Zr9fqh5sEznzQwArE",
+      "type": "line",
+      "x": 1739.5936200774358,
+      "y": 462.2159734687157,
+      "width": 88.30808627974527,
+      "height": 9.797916664247975,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-7"
+      ],
+      "seed": 584710915,
+      "version": 2181,
+      "versionNonce": 584712710,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          2.326538897826852,
+          3.9056133261361587
+        ],
+        [
+          12.359939318521995,
+          7.182387014695761
+        ],
+        [
+          25.710950037209347,
+          9.166781347006062
+        ],
+        [
+          46.6269757640547,
+          9.347610268342288
+        ],
+        [
+          71.03526003420632,
+          8.084235941711592
+        ],
+        [
+          85.2899738827162,
+          3.4881086608341767
+        ],
+        [
+          88.30808627974527,
+          -0.45030639590568633
+        ]
+      ],
+      "lastCommittedPoint": [
+        510.69444444444457,
+        -2.6041666666666288
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0009",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322664542,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "type": "ellipse",
+      "version": 5199,
+      "versionNonce": 885099322,
+      "isDeleted": false,
+      "id": "c_X0SvCAL5m9jpVn5DLuw",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 1738.472797391274,
+      "y": 421.9753037729033,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "width": 87.65074610854188,
+      "height": 17.72670397681366,
+      "seed": 1820959395,
+      "groupIds": [
+        "wallet-db-7"
+      ],
+      "index": "a001",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070946132,
+      "created": 1794322664543,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "G7EyyuywzNzSIskiodmhF",
+      "type": "ellipse",
+      "x": 1809.9825296918548,
+      "y": 446.5511066500367,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-7"
+      ],
+      "seed": 488855107,
+      "version": 568,
+      "versionNonce": 488856902,
+      "isDeleted": false,
+      "index": "a0011",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322664543,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "eFhMS502NCzfjOU9etY-F",
+      "type": "ellipse",
+      "x": 1809.9825296918548,
+      "y": 477.15356050909713,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-7"
+      ],
+      "seed": 1669699043,
+      "version": 617,
+      "versionNonce": 1669700838,
+      "isDeleted": false,
+      "index": "a0012",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322664543,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "zRWuGW_lGbast1ZrsnWxR",
+      "type": "ellipse",
+      "x": 1809.9825296918548,
+      "y": 510.4143616835938,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-7"
+      ],
+      "seed": 247390595,
+      "version": 673,
+      "versionNonce": 247392390,
+      "isDeleted": false,
+      "index": "a0013",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322664543,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "oJvH6Ox-T6fO60-ipYkwM",
+      "type": "arrow",
+      "x": 940,
+      "y": 465,
+      "width": 64,
+      "height": 0,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0014",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 454646477,
+      "version": 396,
+      "versionNonce": 454648272,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322669701,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          64,
+          0
+        ]
+      ],
+      "startBinding": {
+        "elementId": "yXL4tewX6ULsQ63JTKVNj",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "_Bap6Xy55_3ZuU9s4zeOr",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "aXqAQGeBuh3Xtrrbx0efg",
+      "type": "arrow",
+      "x": 1146,
+      "y": 465,
+      "width": 68,
+      "height": 145,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0015",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 851564963,
+      "version": 438,
+      "versionNonce": 851566758,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322673079,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          68,
+          -145
+        ]
+      ],
+      "startBinding": {
+        "elementId": "_Bap6Xy55_3ZuU9s4zeOr",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "cKv_NVgxFFSTyLEX6LZeb",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "LducTaT1cOhvscdcxq7ke",
+      "type": "arrow",
+      "x": 1476,
+      "y": 320,
+      "width": 258,
+      "height": 150,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0016",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 819928461,
+      "version": 461,
+      "versionNonce": 819930256,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322674920,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          258,
+          150
+        ]
+      ],
+      "startBinding": {
+        "elementId": "cKv_NVgxFFSTyLEX6LZeb",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "JKUgRVs36AgBrCauXvP6G",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "UsJRTTQK71vnElgI5tnX2",
+      "type": "rectangle",
+      "x": 1220,
+      "y": 430,
+      "width": 250,
+      "height": 100,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-17"
+      ],
+      "frameId": null,
+      "index": "a0017",
+      "roundness": {
+        "type": 3
+      },
+      "seed": 2110567693,
+      "version": 574,
+      "versionNonce": 2110569488,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "type": "text",
+          "id": "Vr0Upwg6"
+        },
+        {
+          "type": "arrow",
+          "id": "UnGjTAYEyddy3OhHfduay"
+        },
+        {
+          "type": "arrow",
+          "id": "dq0_CJQH3ITLtHJJbeptU"
+        }
+      ],
+      "updated": 1795070903234,
+      "created": 1794322741111,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "Vr0Upwg6",
+      "type": "text",
+      "x": 1259,
+      "y": 467.5,
+      "width": 172,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-17"
+      ],
+      "frameId": null,
+      "index": "a0018",
+      "roundness": null,
+      "seed": 2045545325,
+      "version": 599,
+      "versionNonce": 2045547120,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322741111,
+      "link": null,
+      "locked": false,
+      "text": "Wallet Service #2",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "UsJRTTQK71vnElgI5tnX2",
+      "originalText": "Wallet Service #2",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Wallet Service #2"
+    },
+    {
+      "id": "QDwGM6RrfA01eEIbk-3Te",
+      "type": "rectangle",
+      "x": 1220,
+      "y": 590,
+      "width": 250,
+      "height": 100,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-19"
+      ],
+      "frameId": null,
+      "index": "a0019",
+      "roundness": {
+        "type": 3
+      },
+      "seed": 456146083,
+      "version": 613,
+      "versionNonce": 456147878,
+      "isDeleted": false,
+      "boundElements": [
+        {
+          "type": "text",
+          "id": "BWvxCnXn"
+        },
+        {
+          "type": "arrow",
+          "id": "px7Chjm-Ss-dnU6wmCb-8"
+        },
+        {
+          "type": "arrow",
+          "id": "0gXGV5ZQwL5WTiqCF2Tdh"
+        },
+        {
+          "type": "arrow",
+          "id": "wallet-arrow-70"
+        }
+      ],
+      "updated": 1795070903234,
+      "created": 1794322746934,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "BWvxCnXn",
+      "type": "text",
+      "x": 1260,
+      "y": 627.5,
+      "width": 170,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-node-19"
+      ],
+      "frameId": null,
+      "index": "a002",
+      "roundness": null,
+      "seed": 803647555,
+      "version": 656,
+      "versionNonce": 442195302,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070946132,
+      "created": 1794322746934,
+      "link": null,
+      "locked": false,
+      "text": "Wallet Service #3",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "QDwGM6RrfA01eEIbk-3Te",
+      "originalText": "Wallet Service #3",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Wallet Service #3"
+    },
+    {
+      "id": "UnGjTAYEyddy3OhHfduay",
+      "type": "arrow",
+      "x": 1146,
+      "y": 470,
+      "width": 68,
+      "height": 10,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0021",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 85116355,
+      "version": 365,
+      "versionNonce": 85118150,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322755269,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          68,
+          10
+        ]
+      ],
+      "startBinding": {
+        "elementId": "_Bap6Xy55_3ZuU9s4zeOr",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "UsJRTTQK71vnElgI5tnX2",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "px7Chjm-Ss-dnU6wmCb-8",
+      "type": "arrow",
+      "x": 1146,
+      "y": 480,
+      "width": 68,
+      "height": 160,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0022",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 919650051,
+      "version": 393,
+      "versionNonce": 919651846,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322760061,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          68,
+          160
+        ]
+      ],
+      "startBinding": {
+        "elementId": "_Bap6Xy55_3ZuU9s4zeOr",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "QDwGM6RrfA01eEIbk-3Te",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "KtleCWdZ",
+      "type": "text",
+      "x": 820,
+      "y": 1010,
+      "width": 522,
+      "height": 475,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0023",
+      "roundness": null,
+      "seed": 1846411267,
+      "version": 575,
+      "versionNonce": 1846413062,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322897544,
+      "link": null,
+      "locked": false,
+      "text": "Transfer - one ACID transaction\n1. Verify auth; derive sender from caller ownership.\n   Validate MYR currency + positive integer amount.\n2. BEGIN; claim UNIQUE(caller, operation, key),\n   with a fingerprint of the transfer payload.\n3. Lock BOTH wallet rows, ascending wallet_id.\n   Recheck ownership + currency + available funds.\n4. Debit sender + credit recipient; insert transfer\n   and the immutable balanced ledger pair.\n5. Save idempotency result in this SAME transaction.\n6. COMMIT with required synchronous durability;\n   return success only after commit acknowledgement.\n\nPessimistic row locks serialize conflicting transfers.\n-> Check destination BIGINT overflow too\n-> Bound lock waits + transaction timeouts\n-> Roll back on failure; retry transient errors with\n   the same key, capped backoff + jitter\n-> No network calls while holding DB row locks",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Transfer - one ACID transaction\n1. Verify auth; derive sender from caller ownership.\n   Validate MYR currency + positive integer amount.\n2. BEGIN; claim UNIQUE(caller, operation, key),\n   with a fingerprint of the transfer payload.\n3. Lock BOTH wallet rows, ascending wallet_id.\n   Recheck ownership + currency + available funds.\n4. Debit sender + credit recipient; insert transfer\n   and the immutable balanced ledger pair.\n5. Save idempotency result in this SAME transaction.\n6. COMMIT with required synchronous durability;\n   return success only after commit acknowledgement.\n\nPessimistic row locks serialize conflicting transfers.\n-> Check destination BIGINT overflow too\n-> Bound lock waits + transaction timeouts\n-> Roll back on failure; retry transient errors with\n   the same key, capped backoff + jitter\n-> No network calls while holding DB row locks",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Transfer - one ACID transaction\n1. Verify auth; derive sender from caller ownership.\n   Validate MYR currency + positive integer amount.\n2. BEGIN; claim UNIQUE(caller, operation, key),\n   with a fingerprint of the transfer payload.\n3. Lock BOTH wallet rows, ascending wallet_id.\n   Recheck ownership + currency + available funds.\n4. Debit sender + credit recipient; insert transfer\n   and the immutable balanced ledger pair.\n5. Save idempotency result in this SAME transaction.\n6. COMMIT with required synchronous durability;\n   return success only after commit acknowledgement.\n\nPessimistic row locks serialize conflicting transfers.\n-> Check destination BIGINT overflow too\n-> Bound lock waits + transaction timeouts\n-> Roll back on failure; retry transient errors with\n   the same key, capped backoff + jitter\n-> No network calls while holding DB row locks"
+    },
+    {
+      "id": "o1Rv1nYu",
+      "type": "text",
+      "x": 1680,
+      "y": 1010,
+      "width": 566,
+      "height": 350,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0024",
+      "roundness": null,
+      "seed": 933076013,
+      "version": 848,
+      "versionNonce": 933077808,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794323666879,
+      "link": null,
+      "locked": false,
+      "text": "Idempotency + crash recovery\nKey scoped to caller + operation; payload fingerprint\n-> Same key + payload: return saved result\n-> Same key + different payload: reject\n-> Concurrent duplicate: unique constraint arbitrates;\n   wait for original outcome, then replay/check payload\n\nCrash before commit?\n-> No committed transfer; retry with the same key\nCrash after commit, but response lost?\n-> Retry reads the result committed with the transfer\n\nKeep keys/results for the full supported retry window.\nAn expired or new key is not an unlimited retry guarantee.",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Idempotency + crash recovery\nKey scoped to caller + operation; payload fingerprint\n-> Same key + payload: return saved result\n-> Same key + different payload: reject\n-> Concurrent duplicate: unique constraint arbitrates;\n   wait for original outcome, then replay/check payload\n\nCrash before commit?\n-> No committed transfer; retry with the same key\nCrash after commit, but response lost?\n-> Retry reads the result committed with the transfer\n\nKeep keys/results for the full supported retry window.\nAn expired or new key is not an unlimited retry guarantee.",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Idempotency + crash recovery\nKey scoped to caller + operation; payload fingerprint\n-> Same key + payload: return saved result\n-> Same key + different payload: reject\n-> Concurrent duplicate: unique constraint arbitrates;\n   wait for original outcome, then replay/check payload\n\nCrash before commit?\n-> No committed transfer; retry with the same key\nCrash after commit, but response lost?\n-> Retry reads the result committed with the transfer\n\nKeep keys/results for the full supported retry window.\nAn expired or new key is not an unlimited retry guarantee."
+    },
+    {
+      "id": "OcjphByDKUWSnGAt2nCBU",
+      "type": "diamond",
+      "x": 920.0479245585207,
+      "y": 818.9901401678358,
+      "width": 112.64736525303451,
+      "height": 36.77344700318558,
+      "angle": 0,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#fd8888",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-redis"
+      ],
+      "seed": 56060333,
+      "version": 902,
+      "versionNonce": 56062128,
+      "isDeleted": false,
+      "index": "a0025",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794324949781,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "cENca3ykzwkYBl18e15H_",
+      "type": "diamond",
+      "x": 920.0479245585207,
+      "y": 810.1183602395772,
+      "width": 112.64736525303451,
+      "height": 36.77344700318558,
+      "angle": 0,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#fd8888",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-redis"
+      ],
+      "seed": 829926413,
+      "version": 943,
+      "versionNonce": 829928208,
+      "isDeleted": false,
+      "index": "a0026",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794324949781,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "RLXyXooxo6lQEG2GZYE4N",
+      "type": "diamond",
+      "x": 920.0479245585207,
+      "y": 797.487800644865,
+      "width": 112.64736525303451,
+      "height": 36.77344700318558,
+      "angle": 0,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#fd8888",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-redis"
+      ],
+      "seed": 186688109,
+      "version": 1023,
+      "versionNonce": 186689904,
+      "isDeleted": false,
+      "index": "a0027",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794324949781,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "t5mjIrJq_CS0lVwVxGhIP",
+      "type": "diamond",
+      "x": 920.0479245585207,
+      "y": 784.9561283475678,
+      "width": 112.64736525303451,
+      "height": 36.77344700318558,
+      "angle": 0,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "#fd8888",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-redis"
+      ],
+      "seed": 85707981,
+      "version": 1065,
+      "versionNonce": 85709776,
+      "isDeleted": false,
+      "index": "a0028",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794324949781,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "mOR9UGds",
+      "type": "text",
+      "x": 820,
+      "y": 1600,
+      "width": 580,
+      "height": 225,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0029",
+      "roundness": null,
+      "seed": 207804525,
+      "version": 468,
+      "versionNonce": 207806320,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325053957,
+      "link": null,
+      "locked": false,
+      "text": "Read paths\nBalance -> authenticated owner -> PRIMARY\n-> Fresh statement snapshot; no stale money cache\nHistory -> PRIMARY initially\n-> Optional replica only for explicitly lag-tolerant history\n-> Cursor (created_at, id) + deterministic descending merge\n\nRedis is not the authoritative balance or a money lock.\nA DB transaction owns atomicity for both wallets.",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Read paths\nBalance -> authenticated owner -> PRIMARY\n-> Fresh statement snapshot; no stale money cache\nHistory -> PRIMARY initially\n-> Optional replica only for explicitly lag-tolerant history\n-> Cursor (created_at, id) + deterministic descending merge\n\nRedis is not the authoritative balance or a money lock.\nA DB transaction owns atomicity for both wallets.",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Read paths\nBalance -> authenticated owner -> PRIMARY\n-> Fresh statement snapshot; no stale money cache\nHistory -> PRIMARY initially\n-> Optional replica only for explicitly lag-tolerant history\n-> Cursor (created_at, id) + deterministic descending merge\n\nRedis is not the authoritative balance or a money lock.\nA DB transaction owns atomicity for both wallets."
+    },
+    {
+      "id": "Z3y8SSJjdj7Wdkpt1t2v7",
+      "type": "line",
+      "x": 2200,
+      "y": 430,
+      "width": 88.21658171083376,
+      "height": 113.8575037534261,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#228be6",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-30"
+      ],
+      "seed": 990130125,
+      "version": 4114,
+      "versionNonce": 1369445370,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.29089298333313673,
+          86.05288422061678
+        ],
+        [
+          0.013613108737802165,
+          95.84963140781468
+        ],
+        [
+          4.543349062013738,
+          100.08268472409586
+        ],
+        [
+          20.317928500125443,
+          103.66521849306073
+        ],
+        [
+          46.98143617553956,
+          104.78076599153316
+        ],
+        [
+          72.45665455006592,
+          102.9996310009587
+        ],
+        [
+          85.99182564238487,
+          98.74007888522631
+        ],
+        [
+          87.90077837148979,
+          95.14923176741362
+        ],
+        [
+          88.16888387182134,
+          87.26194204835767
+        ],
+        [
+          87.95845222911922,
+          7.219356674957439
+        ],
+        [
+          87.48407176050935,
+          -0.3431928547433216
+        ],
+        [
+          81.81967725989045,
+          -4.569951534960701
+        ],
+        [
+          69.89167127292335,
+          -7.017866506201685
+        ],
+        [
+          42.70935725136615,
+          -9.076737761892943
+        ],
+        [
+          20.91603533578692,
+          -7.849028196182914
+        ],
+        [
+          3.775735655469765,
+          -3.684787148572539
+        ],
+        [
+          -0.047697839012426885,
+          -0.0517060607782156
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lastCommittedPoint": [
+        1.0602678571428896,
+        551.8638392857142
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a003",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [
+        {
+          "type": "arrow",
+          "id": "ZVSN9CPMTednOdq_P-q1t"
+        }
+      ],
+      "updated": 1795070946132,
+      "created": 1794325308156,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "Rb9vHQZMm0VXZLFMElIIM",
+      "type": "line",
+      "x": 2200.6873615894974,
+      "y": 495.2901280307876,
+      "width": 88.30808627974527,
+      "height": 9.797916664247975,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-30"
+      ],
+      "seed": 2145824301,
+      "version": 1847,
+      "versionNonce": 2145826096,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          2.326538897826852,
+          3.9056133261361587
+        ],
+        [
+          12.359939318521995,
+          7.182387014695761
+        ],
+        [
+          25.710950037209347,
+          9.166781347006062
+        ],
+        [
+          46.6269757640547,
+          9.347610268342288
+        ],
+        [
+          71.03526003420632,
+          8.084235941711592
+        ],
+        [
+          85.2899738827162,
+          3.4881086608341767
+        ],
+        [
+          88.30808627974527,
+          -0.45030639590568633
+        ]
+      ],
+      "lastCommittedPoint": [
+        510.69444444444457,
+        -2.6041666666666288
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0031",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325308156,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "plQ13ZbCm1_h4IMzwjpZH",
+      "type": "line",
+      "x": 2199.593620077436,
+      "y": 462.2159734687159,
+      "width": 88.30808627974527,
+      "height": 9.797916664247975,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-30"
+      ],
+      "seed": 1420451981,
+      "version": 1934,
+      "versionNonce": 1420453776,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          2.326538897826852,
+          3.9056133261361587
+        ],
+        [
+          12.359939318521995,
+          7.182387014695761
+        ],
+        [
+          25.710950037209347,
+          9.166781347006062
+        ],
+        [
+          46.6269757640547,
+          9.347610268342288
+        ],
+        [
+          71.03526003420632,
+          8.084235941711592
+        ],
+        [
+          85.2899738827162,
+          3.4881086608341767
+        ],
+        [
+          88.30808627974527,
+          -0.45030639590568633
+        ]
+      ],
+      "lastCommittedPoint": [
+        510.69444444444457,
+        -2.6041666666666288
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0032",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325308156,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "type": "ellipse",
+      "version": 4951,
+      "versionNonce": 252235248,
+      "isDeleted": false,
+      "id": "JihO7j53eXWY5hMSezK40",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 2198.472797391274,
+      "y": 421.9753037729033,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "width": 87.65074610854188,
+      "height": 17.72670397681366,
+      "seed": 252233453,
+      "groupIds": [
+        "wallet-db-30"
+      ],
+      "index": "a0033",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325308156,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "y0-doq7zms3xKuyIlKpR8",
+      "type": "ellipse",
+      "x": 2269.982529691855,
+      "y": 446.5511066500369,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-30"
+      ],
+      "seed": 294347085,
+      "version": 321,
+      "versionNonce": 294348880,
+      "isDeleted": false,
+      "index": "a0034",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325308156,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "x6t-UVSpo8ZsovuvPAmOa",
+      "type": "ellipse",
+      "x": 2269.982529691855,
+      "y": 477.15356050909736,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-30"
+      ],
+      "seed": 831238061,
+      "version": 370,
+      "versionNonce": 831239856,
+      "isDeleted": false,
+      "index": "a0035",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325308156,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "u4yGwV7vU8aSeu0IKPZvL",
+      "type": "ellipse",
+      "x": 2269.982529691855,
+      "y": 510.41436168359405,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-30"
+      ],
+      "seed": 1563636237,
+      "version": 424,
+      "versionNonce": 1563638032,
+      "isDeleted": false,
+      "index": "a0036",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325308156,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "H0mBHBiO",
+      "type": "text",
+      "x": 2110,
+      "y": 345,
+      "width": 207,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0037",
+      "roundness": null,
+      "seed": 1838062979,
+      "version": 156,
+      "versionNonce": 1838064774,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325311522,
+      "link": null,
+      "locked": false,
+      "text": "Synchronous standby",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Synchronous standby",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false,
+      "rawText": "Synchronous standby"
+    },
+    {
+      "id": "dq0_CJQH3ITLtHJJbeptU",
+      "type": "arrow",
+      "x": 1476,
+      "y": 480,
+      "width": 258,
+      "height": 0,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0038",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 451972749,
+      "version": 432,
+      "versionNonce": 451974544,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322757638,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          258,
+          0
+        ]
+      ],
+      "startBinding": {
+        "elementId": "UsJRTTQK71vnElgI5tnX2",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "JKUgRVs36AgBrCauXvP6G",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "0gXGV5ZQwL5WTiqCF2Tdh",
+      "type": "arrow",
+      "x": 1476,
+      "y": 640,
+      "width": 258,
+      "height": 150,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0039",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 1412881165,
+      "version": 551,
+      "versionNonce": 1412882960,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322762409,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          258,
+          -150
+        ]
+      ],
+      "startBinding": {
+        "elementId": "QDwGM6RrfA01eEIbk-3Te",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "JKUgRVs36AgBrCauXvP6G",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "ZVSN9CPMTednOdq_P-q1t",
+      "type": "arrow",
+      "x": 1835,
+      "y": 478,
+      "width": 359,
+      "height": 0,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a004",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 2116583629,
+      "version": 183,
+      "versionNonce": 655802534,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070946132,
+      "created": 1794325322681,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          359,
+          0
+        ]
+      ],
+      "startBinding": {
+        "elementId": "JKUgRVs36AgBrCauXvP6G",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": {
+        "elementId": "Z3y8SSJjdj7Wdkpt1t2v7",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "1T9pgMqbU0fxm6r_lLM8s",
+      "type": "arrow",
+      "x": 1810,
+      "y": 540,
+      "width": 384,
+      "height": 220,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0041",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 1818306723,
+      "version": 121,
+      "versionNonce": 1818308518,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325328735,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          130,
+          170
+        ],
+        [
+          384,
+          220
+        ]
+      ],
+      "startBinding": null,
+      "endBinding": {
+        "elementId": "XAP8kRGD5HfOSW0oRFRg4",
+        "mode": "orbit",
+        "fixedPoint": [
+          0,
+          0.5001
+        ]
+      },
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "0rDSsVW1",
+      "type": "text",
+      "x": 1680,
+      "y": 1450,
+      "width": 543,
+      "height": 350,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0042",
+      "roundness": null,
+      "seed": 1143643459,
+      "version": 781,
+      "versionNonce": 1143645254,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325419211,
+      "link": null,
+      "locked": false,
+      "text": "Durability + safe failover\nPostgreSQL synchronous_commit = on\n+ configured synchronous standby\n-> Success waits for local + required standby WAL flush\n-> Flush means durable; it does not mean a replica's\n   queries have replayed the transfer yet\n\nPromote only an eligible replica with ALL acknowledged\ncommits; replay them before serving money traffic.\nFence old primary before enabling the new writer.\n-> Never send strict balance reads to a random replica\n-> Pause transfers if sync durability or failover safety\n   cannot be guaranteed; async history may still lag\n-> No generic W+R>N or sloppy-quorum money reads",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Durability + safe failover\nPostgreSQL synchronous_commit = on\n+ configured synchronous standby\n-> Success waits for local + required standby WAL flush\n-> Flush means durable; it does not mean a replica's\n   queries have replayed the transfer yet\n\nPromote only an eligible replica with ALL acknowledged\ncommits; replay them before serving money traffic.\nFence old primary before enabling the new writer.\n-> Never send strict balance reads to a random replica\n-> Pause transfers if sync durability or failover safety\n   cannot be guaranteed; async history may still lag\n-> No generic W+R>N or sloppy-quorum money reads",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Durability + safe failover\nPostgreSQL synchronous_commit = on\n+ configured synchronous standby\n-> Success waits for local + required standby WAL flush\n-> Flush means durable; it does not mean a replica's\n   queries have replayed the transfer yet\n\nPromote only an eligible replica with ALL acknowledged\ncommits; replay them before serving money traffic.\nFence old primary before enabling the new writer.\n-> Never send strict balance reads to a random replica\n-> Pause transfers if sync durability or failover safety\n   cannot be guaranteed; async history may still lag\n-> No generic W+R>N or sloppy-quorum money reads"
+    },
+    {
+      "id": "XAP8kRGD5HfOSW0oRFRg4",
+      "type": "line",
+      "x": 2200,
+      "y": 720,
+      "width": 88.21658171083376,
+      "height": 113.8575037534261,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#228be6",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-43"
+      ],
+      "seed": 1827498861,
+      "version": 4259,
+      "versionNonce": 1827500656,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0.29089298333313673,
+          86.05288422061678
+        ],
+        [
+          0.013613108737802165,
+          95.84963140781468
+        ],
+        [
+          4.543349062013738,
+          100.08268472409586
+        ],
+        [
+          20.317928500125443,
+          103.66521849306073
+        ],
+        [
+          46.98143617553956,
+          104.78076599153316
+        ],
+        [
+          72.45665455006592,
+          102.9996310009587
+        ],
+        [
+          85.99182564238487,
+          98.74007888522631
+        ],
+        [
+          87.90077837148979,
+          95.14923176741362
+        ],
+        [
+          88.16888387182134,
+          87.26194204835767
+        ],
+        [
+          87.95845222911922,
+          7.219356674957439
+        ],
+        [
+          87.48407176050935,
+          -0.3431928547433216
+        ],
+        [
+          81.81967725989045,
+          -4.569951534960701
+        ],
+        [
+          69.89167127292335,
+          -7.017866506201685
+        ],
+        [
+          42.70935725136615,
+          -9.076737761892943
+        ],
+        [
+          20.91603533578692,
+          -7.849028196182914
+        ],
+        [
+          3.775735655469765,
+          -3.684787148572539
+        ],
+        [
+          -0.047697839012426885,
+          -0.0517060607782156
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lastCommittedPoint": [
+        1.0602678571428896,
+        551.8638392857142
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0043",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [
+        {
+          "type": "arrow",
+          "id": "1T9pgMqbU0fxm6r_lLM8s"
+        }
+      ],
+      "updated": 1795070903234,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "-9VFQFhqoWNYkPvfsH1Hq",
+      "type": "line",
+      "x": 2200.687361589497,
+      "y": 785.2901280307874,
+      "width": 88.30808627974527,
+      "height": 9.797916664247975,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-43"
+      ],
+      "seed": 73889229,
+      "version": 1993,
+      "versionNonce": 73891024,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          2.326538897826852,
+          3.9056133261361587
+        ],
+        [
+          12.359939318521995,
+          7.182387014695761
+        ],
+        [
+          25.710950037209347,
+          9.166781347006062
+        ],
+        [
+          46.6269757640547,
+          9.347610268342288
+        ],
+        [
+          71.03526003420632,
+          8.084235941711592
+        ],
+        [
+          85.2899738827162,
+          3.4881086608341767
+        ],
+        [
+          88.30808627974527,
+          -0.45030639590568633
+        ]
+      ],
+      "lastCommittedPoint": [
+        510.69444444444457,
+        -2.6041666666666288
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0044",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "chFHGisepWbJllcf4JrDz",
+      "type": "line",
+      "x": 2199.593620077436,
+      "y": 752.2159734687157,
+      "width": 88.30808627974527,
+      "height": 9.797916664247975,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-43"
+      ],
+      "seed": 150025261,
+      "version": 2080,
+      "versionNonce": 150027056,
+      "isDeleted": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          2.326538897826852,
+          3.9056133261361587
+        ],
+        [
+          12.359939318521995,
+          7.182387014695761
+        ],
+        [
+          25.710950037209347,
+          9.166781347006062
+        ],
+        [
+          46.6269757640547,
+          9.347610268342288
+        ],
+        [
+          71.03526003420632,
+          8.084235941711592
+        ],
+        [
+          85.2899738827162,
+          3.4881086608341767
+        ],
+        [
+          88.30808627974527,
+          -0.45030639590568633
+        ]
+      ],
+      "lastCommittedPoint": [
+        510.69444444444457,
+        -2.6041666666666288
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0045",
+      "frameId": null,
+      "roundness": {
+        "type": 2
+      },
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "type": "ellipse",
+      "version": 5097,
+      "versionNonce": 645148048,
+      "isDeleted": false,
+      "id": "q57m9U8hzuww-MESL5X0M",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 2198.472797391274,
+      "y": 711.9753037729033,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "width": 87.65074610854188,
+      "height": 17.72670397681366,
+      "seed": 645146253,
+      "groupIds": [
+        "wallet-db-43"
+      ],
+      "index": "a0046",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "vzX1HJm4Oa6MbcLmepAez",
+      "type": "ellipse",
+      "x": 2269.982529691855,
+      "y": 736.5511066500367,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-43"
+      ],
+      "seed": 1336528109,
+      "version": 467,
+      "versionNonce": 1336529904,
+      "isDeleted": false,
+      "index": "a0047",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "EtldAP8Uf4yeEqV-NPnM1",
+      "type": "ellipse",
+      "x": 2269.982529691855,
+      "y": 767.1535605090971,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-43"
+      ],
+      "seed": 1679533901,
+      "version": 516,
+      "versionNonce": 1679535696,
+      "isDeleted": false,
+      "index": "a0048",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "X0Nsrhp2wmX0dGKcPwU45",
+      "type": "ellipse",
+      "x": 2269.982529691855,
+      "y": 800.4143616835936,
+      "width": 12.846057046979809,
+      "height": 13.941904362416096,
+      "angle": 0,
+      "strokeColor": "#0a11d3",
+      "backgroundColor": "#fff",
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [
+        "wallet-db-43"
+      ],
+      "seed": 371406253,
+      "version": 570,
+      "versionNonce": 371408048,
+      "isDeleted": false,
+      "index": "a0049",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "7OOitVGU",
+      "type": "text",
+      "x": 2095,
+      "y": 650,
+      "width": 227,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a005",
+      "roundness": null,
+      "seed": 283768845,
+      "version": 303,
+      "versionNonce": 187663546,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070946133,
+      "created": 1794325916654,
+      "link": null,
+      "locked": false,
+      "text": "Optional history replica",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Optional history replica",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Optional history replica"
+    },
+    {
+      "id": "8KT8M6Bo",
+      "type": "text",
+      "x": 2520,
+      "y": 90,
+      "width": 568,
+      "height": 350,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0051",
+      "roundness": null,
+      "seed": 437857187,
+      "version": 406,
+      "versionNonce": 437858982,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794326457866,
+      "link": null,
+      "locked": false,
+      "text": "Security + reconciliation\nBackend verifies token with trusted keys + allowed\nsignature algorithm; check expiry, issuer, audience,\nrequired claims and revocation policy.\n-> Never trust a caller-supplied sender owner_id\n-> Authorize wallet access on every request\n\nPrevent incorrect postings in the write transaction.\nReconciliation is an additional detection control:\n-> Total debits = credits, per transfer + currency\n-> Compare wallet balances with immutable ledger totals\n-> Alert and investigate discrepancies\n-> Corrections use compensating entries; never edit ledger\n-> Avoid logging tokens or sensitive payment data",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Security + reconciliation\nBackend verifies token with trusted keys + allowed\nsignature algorithm; check expiry, issuer, audience,\nrequired claims and revocation policy.\n-> Never trust a caller-supplied sender owner_id\n-> Authorize wallet access on every request\n\nPrevent incorrect postings in the write transaction.\nReconciliation is an additional detection control:\n-> Total debits = credits, per transfer + currency\n-> Compare wallet balances with immutable ledger totals\n-> Alert and investigate discrepancies\n-> Corrections use compensating entries; never edit ledger\n-> Avoid logging tokens or sensitive payment data",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Security + reconciliation\nBackend verifies token with trusted keys + allowed\nsignature algorithm; check expiry, issuer, audience,\nrequired claims and revocation policy.\n-> Never trust a caller-supplied sender owner_id\n-> Authorize wallet access on every request\n\nPrevent incorrect postings in the write transaction.\nReconciliation is an additional detection control:\n-> Total debits = credits, per transfer + currency\n-> Compare wallet balances with immutable ledger totals\n-> Alert and investigate discrepancies\n-> Corrections use compensating entries; never edit ledger\n-> Avoid logging tokens or sensitive payment data"
+    },
+    {
+      "id": "KDViOgC7",
+      "type": "text",
+      "x": 2520,
+      "y": 560,
+      "width": 565,
+      "height": 500,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0052",
+      "roundness": null,
+      "seed": 352077453,
+      "version": 1578,
+      "versionNonce": 352079248,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794326809564,
+      "link": null,
+      "locked": false,
+      "text": "Hot wallet + overload protection\nA busy merchant serializes on the destination row.\nUser rate limits alone do not protect that row.\n\nBefore taking DB connections:\n-> Per-wallet in-flight limits for BOTH wallets\n-> Global in-flight cap across service instances\n-> Coordinate admission across instances if needed\n-> Bound queue length + waits; time out quickly\n-> Redis is optional for shared admission / rate limits\n\nKeep DB locks short + connection pool bounded.\nReturn 429 + Retry-After when admission is full.\n-> Capped exponential backoff + random jitter\n-> Reuse original idempotency key on every retry\n-> Prevent retries from multiplying the overload\n\nProtect destination contention, not just sender fairness.\nMore service instances do not raise DB write capacity.\nA queue does not increase sustained DB throughput.",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Hot wallet + overload protection\nA busy merchant serializes on the destination row.\nUser rate limits alone do not protect that row.\n\nBefore taking DB connections:\n-> Per-wallet in-flight limits for BOTH wallets\n-> Global in-flight cap across service instances\n-> Coordinate admission across instances if needed\n-> Bound queue length + waits; time out quickly\n-> Redis is optional for shared admission / rate limits\n\nKeep DB locks short + connection pool bounded.\nReturn 429 + Retry-After when admission is full.\n-> Capped exponential backoff + random jitter\n-> Reuse original idempotency key on every retry\n-> Prevent retries from multiplying the overload\n\nProtect destination contention, not just sender fairness.\nMore service instances do not raise DB write capacity.\nA queue does not increase sustained DB throughput.",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Hot wallet + overload protection\nA busy merchant serializes on the destination row.\nUser rate limits alone do not protect that row.\n\nBefore taking DB connections:\n-> Per-wallet in-flight limits for BOTH wallets\n-> Global in-flight cap across service instances\n-> Coordinate admission across instances if needed\n-> Bound queue length + waits; time out quickly\n-> Redis is optional for shared admission / rate limits\n\nKeep DB locks short + connection pool bounded.\nReturn 429 + Retry-After when admission is full.\n-> Capped exponential backoff + random jitter\n-> Reuse original idempotency key on every retry\n-> Prevent retries from multiplying the overload\n\nProtect destination contention, not just sender fairness.\nMore service instances do not raise DB write capacity.\nA queue does not increase sustained DB throughput."
+    },
+    {
+      "type": "line",
+      "version": 1793,
+      "versionNonce": 1625761638,
+      "isDeleted": true,
+      "id": "txqA-G25jGBfDOinDSURG",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 1314.6394903253718,
+      "y": 1242.2930487748033,
+      "strokeColor": "#881fa3",
+      "backgroundColor": "#be4bdb",
+      "width": 116.42036295658872,
+      "height": 103.65107323746608,
+      "seed": 1625759843,
+      "groupIds": [],
+      "startBinding": null,
+      "endBinding": null,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -62.44191743896485,
+          19.19929080548739
+        ],
+        [
+          -63.17668831316513,
+          79.43840749607878
+        ],
+        [
+          -7.618334228588694,
+          103.65107323746608
+        ],
+        [
+          51.963117173367294,
+          79.15871076413049
+        ],
+        [
+          53.24367464342358,
+          21.28567723840068
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0053",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794327122577,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "type": "line",
+      "version": 1859,
+      "versionNonce": 396487472,
+      "isDeleted": true,
+      "id": "pvCmerwUJDmPNsU9PDd0M",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 1352.2136694662909,
+      "y": 1283.571654566222,
+      "strokeColor": "#881fa3",
+      "backgroundColor": "#be4bdb",
+      "width": 116.42036295658872,
+      "height": 103.65107323746608,
+      "seed": 396485677,
+      "groupIds": [],
+      "startBinding": null,
+      "endBinding": null,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -62.44191743896485,
+          19.19929080548739
+        ],
+        [
+          -63.17668831316513,
+          79.43840749607878
+        ],
+        [
+          -7.618334228588694,
+          103.65107323746608
+        ],
+        [
+          51.963117173367294,
+          79.15871076413049
+        ],
+        [
+          53.24367464342358,
+          21.28567723840068
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0054",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794327124961,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "type": "line",
+      "version": 1829,
+      "versionNonce": 533972646,
+      "isDeleted": true,
+      "id": "nxS6NFyBOPuCt7WCi2HsZ",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 1400.1860600905934,
+      "y": 1332.6596866355508,
+      "strokeColor": "#881fa3",
+      "backgroundColor": "#be4bdb",
+      "width": 116.42036295658872,
+      "height": 103.65107323746608,
+      "seed": 533970851,
+      "groupIds": [],
+      "startBinding": null,
+      "endBinding": null,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -62.44191743896485,
+          19.19929080548739
+        ],
+        [
+          -63.17668831316513,
+          79.43840749607878
+        ],
+        [
+          -7.618334228588694,
+          103.65107323746608
+        ],
+        [
+          51.963117173367294,
+          79.15871076413049
+        ],
+        [
+          53.24367464342358,
+          21.28567723840068
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "lastCommittedPoint": null,
+      "startArrowhead": null,
+      "endArrowhead": null,
+      "index": "a0055",
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794327127533,
+      "link": null,
+      "locked": false,
+      "polygon": false,
+      "hasTextLink": false
+    },
+    {
+      "id": "by3gOpXv",
+      "type": "text",
+      "x": 2520,
+      "y": 1240,
+      "width": 559,
+      "height": 400,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0056",
+      "roundness": null,
+      "seed": 712319981,
+      "version": 96,
+      "versionNonce": 712321776,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794327129400,
+      "link": null,
+      "locked": false,
+      "text": "Trade offs - measure before adding complexity\nStart with one modular service + one primary database.\nMultiple instances provide service capacity / availability.\n\nDefer microservices, Kafka, sharding, and cross-DB\ntransactions until measurements justify their cost.\n-> No Redis distributed lock for transfer atomicity\n-> No two-phase commit in this single-DB baseline\n\nLoad test realistic balances + history + concurrent\ntransfers at the target peak, with hot merchant skew.\n-> Measure p95 latency, lock waits, pool saturation,\n   database CPU / I/O, storage and replication lag\n-> Tune queries + indexes + hardware first\n-> Shard only after a measured limit; cross-shard money\n   then needs a separately designed consistency protocol",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Trade offs - measure before adding complexity\nStart with one modular service + one primary database.\nMultiple instances provide service capacity / availability.\n\nDefer microservices, Kafka, sharding, and cross-DB\ntransactions until measurements justify their cost.\n-> No Redis distributed lock for transfer atomicity\n-> No two-phase commit in this single-DB baseline\n\nLoad test realistic balances + history + concurrent\ntransfers at the target peak, with hot merchant skew.\n-> Measure p95 latency, lock waits, pool saturation,\n   database CPU / I/O, storage and replication lag\n-> Tune queries + indexes + hardware first\n-> Shard only after a measured limit; cross-shard money\n   then needs a separately designed consistency protocol",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Trade offs - measure before adding complexity\nStart with one modular service + one primary database.\nMultiple instances provide service capacity / availability.\n\nDefer microservices, Kafka, sharding, and cross-DB\ntransactions until measurements justify their cost.\n-> No Redis distributed lock for transfer atomicity\n-> No two-phase commit in this single-DB baseline\n\nLoad test realistic balances + history + concurrent\ntransfers at the target peak, with hot merchant skew.\n-> Measure p95 latency, lock waits, pool saturation,\n   database CPU / I/O, storage and replication lag\n-> Tune queries + indexes + hardware first\n-> Shard only after a measured limit; cross-shard money\n   then needs a separately designed consistency protocol"
+    },
+    {
+      "id": "wallet-note-1",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 463,
+      "height": 37.5,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0057",
+      "roundness": null,
+      "seed": 8141301,
+      "version": 1416,
+      "versionNonce": 8143096,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Digital Wallet - millions of users",
+      "fontSize": 30,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Digital Wallet - millions of users",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Digital Wallet - millions of users"
+    },
+    {
+      "id": "wallet-note-2",
+      "type": "text",
+      "x": 0,
+      "y": 790,
+      "width": 460,
+      "height": 30,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0058",
+      "roundness": null,
+      "seed": 8141302,
+      "version": 1416,
+      "versionNonce": 8143097,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "DB Design - one PostgreSQL database",
+      "fontSize": 24,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "DB Design - one PostgreSQL database",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "DB Design - one PostgreSQL database"
+    },
+    {
+      "id": "wallet-note-3",
+      "type": "text",
+      "x": 0,
+      "y": 850,
+      "width": 608,
+      "height": 875,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0059",
+      "roundness": null,
+      "seed": 8141303,
+      "version": 1416,
+      "versionNonce": 8143098,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "One currency for this system: MYR\nMoney = integer minor units (sen), no floats\n\nwallets\n- wallet_id PK, owner_id, currency\n- balance_minor BIGINT NOT NULL\n- CHECK(balance_minor >= 0)\n\ntransfers\n- id PK, sender_wallet_id FK, recipient_wallet_id FK\n- amount_minor BIGINT NOT NULL CHECK(amount_minor > 0)\n- currency, status, created_at\n\nledger_entries (immutable)\n- id PK, transfer_id FK, wallet_id FK\n- signed_amount_minor BIGINT NOT NULL\n- currency, created_at\n-> Two entries per transfer: -amount / +amount\n-> Same currency; sum = 0, enforced by posting\n   logic + reconciliation, not a row CHECK\n\nidempotency\n- caller, operation, key\n- UNIQUE(caller, operation, key)\n- payload_fingerprint, result / transfer_id\n-> Unique constraint already creates its index\n-> Saved atomically with the money movement\n\nHistory indexes on transfers\n(sender_wallet_id, created_at DESC, id DESC)\n(recipient_wallet_id, created_at DESC, id DESC)\n-> Cursor = (created_at, id), descending merge\n-> Merge sender + recipient streams deterministically\n-> Reject self-transfers; validate all ownership,\n   currency and positive-amount rules in backend",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "One currency for this system: MYR\nMoney = integer minor units (sen), no floats\n\nwallets\n- wallet_id PK, owner_id, currency\n- balance_minor BIGINT NOT NULL\n- CHECK(balance_minor >= 0)\n\ntransfers\n- id PK, sender_wallet_id FK, recipient_wallet_id FK\n- amount_minor BIGINT NOT NULL CHECK(amount_minor > 0)\n- currency, status, created_at\n\nledger_entries (immutable)\n- id PK, transfer_id FK, wallet_id FK\n- signed_amount_minor BIGINT NOT NULL\n- currency, created_at\n-> Two entries per transfer: -amount / +amount\n-> Same currency; sum = 0, enforced by posting\n   logic + reconciliation, not a row CHECK\n\nidempotency\n- caller, operation, key\n- UNIQUE(caller, operation, key)\n- payload_fingerprint, result / transfer_id\n-> Unique constraint already creates its index\n-> Saved atomically with the money movement\n\nHistory indexes on transfers\n(sender_wallet_id, created_at DESC, id DESC)\n(recipient_wallet_id, created_at DESC, id DESC)\n-> Cursor = (created_at, id), descending merge\n-> Merge sender + recipient streams deterministically\n-> Reject self-transfers; validate all ownership,\n   currency and positive-amount rules in backend",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "One currency for this system: MYR\nMoney = integer minor units (sen), no floats\n\nwallets\n- wallet_id PK, owner_id, currency\n- balance_minor BIGINT NOT NULL\n- CHECK(balance_minor >= 0)\n\ntransfers\n- id PK, sender_wallet_id FK, recipient_wallet_id FK\n- amount_minor BIGINT NOT NULL CHECK(amount_minor > 0)\n- currency, status, created_at\n\nledger_entries (immutable)\n- id PK, transfer_id FK, wallet_id FK\n- signed_amount_minor BIGINT NOT NULL\n- currency, created_at\n-> Two entries per transfer: -amount / +amount\n-> Same currency; sum = 0, enforced by posting\n   logic + reconciliation, not a row CHECK\n\nidempotency\n- caller, operation, key\n- UNIQUE(caller, operation, key)\n- payload_fingerprint, result / transfer_id\n-> Unique constraint already creates its index\n-> Saved atomically with the money movement\n\nHistory indexes on transfers\n(sender_wallet_id, created_at DESC, id DESC)\n(recipient_wallet_id, created_at DESC, id DESC)\n-> Cursor = (created_at, id), descending merge\n-> Merge sender + recipient streams deterministically\n-> Reject self-transfers; validate all ownership,\n   currency and positive-amount rules in backend"
+    },
+    {
+      "id": "wallet-note-4",
+      "type": "text",
+      "x": 820,
+      "y": 90,
+      "width": 530,
+      "height": 32.5,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a006",
+      "roundness": null,
+      "seed": 8141304,
+      "version": 1417,
+      "versionNonce": 621001702,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070946133,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Request flow - one modular Wallet Service",
+      "fontSize": 26,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Request flow - one modular Wallet Service",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Request flow - one modular Wallet Service"
+    },
+    {
+      "id": "wallet-service-boundary",
+      "type": "rectangle",
+      "x": 1190,
+      "y": 190,
+      "width": 310,
+      "height": 550,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0061",
+      "roundness": {
+        "type": 3
+      },
+      "seed": 112082445,
+      "version": 414,
+      "versionNonce": 112084240,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322630148,
+      "link": null,
+      "locked": false,
+      "customData": {
+        "legacyTextWrap": true
+      },
+      "hasTextLink": false
+    },
+    {
+      "id": "wallet-note-5",
+      "type": "text",
+      "x": 1210,
+      "y": 207,
+      "width": 213,
+      "height": 25,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0062",
+      "roundness": null,
+      "seed": 8141305,
+      "version": 1416,
+      "versionNonce": 8143100,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "N stateless instances",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "N stateless instances",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "N stateless instances"
+    },
+    {
+      "id": "wallet-note-6",
+      "type": "text",
+      "x": 1185,
+      "y": 760,
+      "width": 300,
+      "height": 50,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0063",
+      "roundness": null,
+      "seed": 8141306,
+      "version": 1416,
+      "versionNonce": 8143101,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Same modules in each instance:\nTransfer / Balance / History",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Same modules in each instance:\nTransfer / Balance / History",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Same modules in each instance:\nTransfer / Balance / History"
+    },
+    {
+      "id": "wallet-note-7",
+      "type": "text",
+      "x": 990,
+      "y": 640,
+      "width": 153,
+      "height": 45,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0064",
+      "roundness": null,
+      "seed": 8141307,
+      "version": 1416,
+      "versionNonce": 8143102,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Optional gateway\nat the edge",
+      "fontSize": 18,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Optional gateway\nat the edge",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Optional gateway\nat the edge"
+    },
+    {
+      "id": "wallet-note-8",
+      "type": "text",
+      "x": 1675,
+      "y": 345,
+      "width": 117,
+      "height": 50,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0065",
+      "roundness": null,
+      "seed": 8141308,
+      "version": 1416,
+      "versionNonce": 8143103,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "PostgreSQL\nPRIMARY",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "PostgreSQL\nPRIMARY",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "PostgreSQL\nPRIMARY"
+    },
+    {
+      "id": "wallet-note-9",
+      "type": "text",
+      "x": 1530,
+      "y": 235,
+      "width": 317,
+      "height": 50,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0066",
+      "roundness": null,
+      "seed": 8141309,
+      "version": 1416,
+      "versionNonce": 8143104,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Transfers + strict fresh balance\nHistory initially reads primary",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Transfers + strict fresh balance\nHistory initially reads primary",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Transfers + strict fresh balance\nHistory initially reads primary"
+    },
+    {
+      "id": "wallet-note-10",
+      "type": "text",
+      "x": 1890,
+      "y": 400,
+      "width": 146,
+      "height": 50,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0067",
+      "roundness": null,
+      "seed": 8141310,
+      "version": 1416,
+      "versionNonce": 8143105,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Sync WAL flush\nbefore success",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Sync WAL flush\nbefore success",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Sync WAL flush\nbefore success"
+    },
+    {
+      "id": "wallet-note-11",
+      "type": "text",
+      "x": 2070,
+      "y": 570,
+      "width": 279,
+      "height": 50,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0068",
+      "roundness": null,
+      "seed": 8141311,
+      "version": 1416,
+      "versionNonce": 8143106,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Durability + failover\nStrict reads stay on primary",
+      "fontSize": 20,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Durability + failover\nStrict reads stay on primary",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Durability + failover\nStrict reads stay on primary"
+    },
+    {
+      "id": "wallet-note-12",
+      "type": "text",
+      "x": 1875,
+      "y": 675,
+      "width": 127,
+      "height": 22.5,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0069",
+      "roundness": null,
+      "seed": 8141312,
+      "version": 1416,
+      "versionNonce": 8143107,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Async, may lag",
+      "fontSize": 18,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Async, may lag",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Async, may lag"
+    },
+    {
+      "id": "wallet-arrow-70",
+      "type": "arrow",
+      "x": 1476,
+      "y": 650,
+      "width": 714,
+      "height": 180,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a007",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 454646477,
+      "version": 397,
+      "versionNonce": 1796398458,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070946133,
+      "created": 1794322669701,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          94,
+          0
+        ],
+        [
+          94,
+          180
+        ],
+        [
+          714,
+          180
+        ]
+      ],
+      "startBinding": {
+        "elementId": "QDwGM6RrfA01eEIbk-3Te",
+        "mode": "orbit",
+        "fixedPoint": [
+          1,
+          0.5001
+        ]
+      },
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    },
+    {
+      "id": "wallet-note-13",
+      "type": "text",
+      "x": 1630,
+      "y": 855,
+      "width": 441,
+      "height": 22.5,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0071",
+      "roundness": null,
+      "seed": 8141313,
+      "version": 1416,
+      "versionNonce": 8143108,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "History only, if a few seconds of lag is acceptable",
+      "fontSize": 18,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "History only, if a few seconds of lag is acceptable",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "History only, if a few seconds of lag is acceptable"
+    },
+    {
+      "id": "wallet-note-14",
+      "type": "text",
+      "x": 810,
+      "y": 885,
+      "width": 203,
+      "height": 45,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0072",
+      "roundness": null,
+      "seed": 8141314,
+      "version": 1416,
+      "versionNonce": 8143109,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794321997362,
+      "link": null,
+      "locked": false,
+      "text": "Redis (optional)\nRate limits / admission",
+      "fontSize": 18,
+      "baseFontSize": null,
+      "fontFamily": 5,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Redis (optional)\nRate limits / admission",
+      "autoResize": false,
+      "lineHeight": 1.25,
+      "labelPosition": null,
+      "hasTextLink": false,
+      "rawText": "Redis (optional)\nRate limits / admission"
+    },
+    {
+      "id": "wallet-arrow-73",
+      "type": "arrow",
+      "x": 1184,
+      "y": 710,
+      "width": 144,
+      "height": 100,
+      "angle": 0,
+      "strokeColor": "#c92a2a",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "index": "a0073",
+      "roundness": {
+        "type": 2
+      },
+      "seed": 454646477,
+      "version": 397,
+      "versionNonce": 454648272,
+      "isDeleted": false,
+      "boundElements": [],
+      "updated": 1795070903234,
+      "created": 1794322669701,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -94,
+          0
+        ],
+        [
+          -94,
+          100
+        ],
+        [
+          -144,
+          100
+        ]
+      ],
+      "startBinding": null,
+      "endBinding": null,
+      "startArrowhead": null,
+      "endArrowhead": "arrow",
+      "elbowed": false,
+      "hasTextLink": false,
+      "moveMidPointsWithElement": false
+    }
+  ],
+  "appState": {
+    "theme": "light",
+    "viewBackgroundColor": "#ffffff",
+    "currentItemStrokeColor": "#1e1e1e",
+    "currentItemBackgroundColor": "transparent",
+    "currentItemFillStyle": "solid",
+    "currentItemStrokeWidthKey": "medium",
+    "currentItemStrokeVariability": "constant",
+    "currentItemStrokeStyle": "solid",
+    "currentItemRoughness": 1,
+    "currentItemOpacity": 100,
+    "currentItemFontFamily": 5,
+    "currentItemFontSize": 20,
+    "currentItemTextAlign": "left",
+    "currentItemStartArrowhead": null,
+    "currentItemEndArrowhead": "arrow",
+    "currentItemArrowType": "round",
+    "currentItemFrameRole": null,
+    "scrollX": 65,
+    "scrollY": 65,
+    "zoom": {
+      "value": 0.38
+    },
+    "currentItemRoundness": "round",
+    "gridSize": 20,
+    "gridStep": 5,
+    "gridModeEnabled": false,
+    "gridColor": {
+      "Bold": "rgba(179, 179, 179, 0.5)",
+      "Regular": "rgba(204, 204, 204, 0.5)"
+    },
+    "colorTopPicks": {
+      "elementStroke": null,
+      "elementBackground": null,
+      "bucketFill": null
+    },
+    "currentStrokeOptions": null,
+    "frameRendering": {
+      "enabled": true,
+      "clip": true,
+      "name": true,
+      "outline": true,
+      "markerName": true,
+      "markerEnabled": true
+    },
+    "objectsSnapModeEnabled": false,
+    "activeTool": {
+      "type": "selection",
+      "customType": null,
+      "locked": false,
+      "fromSelection": false,
+      "lastActiveTool": null
+    },
+    "disableContextMenu": false,
+    "bindingPreference": "enabled",
+    "isMidpointSnappingEnabled": true,
+    "boxSelectionMode": "contain"
+  },
+  "files": {}
+}
